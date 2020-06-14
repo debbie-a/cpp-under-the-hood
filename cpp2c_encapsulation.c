@@ -3,10 +3,7 @@
 
 
 static Box largeBox;
-void init()
-{
-	_ZN3BoxC1Eddd(&largeBox, 10, 20,30);
-}
+
 void thisFunc()
 {
 	printf("\n--- thisFunc() ---\n\n"); 
@@ -108,7 +105,7 @@ void doShelves()
 
 int main()
 {
-	init();
+	_ZN3BoxC1Eddd(&largeBox, 10, 20,30);
 
    	printf("\n--- Start main() ---\n\n");
 
