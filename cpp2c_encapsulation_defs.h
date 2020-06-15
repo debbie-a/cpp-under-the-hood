@@ -2,9 +2,8 @@
 #define __CPP2C_ENCAPSULATION_DEFS_H__
 #include <stdbool.h> 
 #define NUM_BOXES 3
-#define DEF_MSG "The total volume held on the shelf is"
 
-extern const char* message;
+
 
 //// Box ////////////
 
@@ -33,15 +32,6 @@ Box* _ZN3BoxmLEd(Box *const, double mult);
 /*void print() const;*/
 void _ZNK3Box5printEv(const Box *const);
 
-/*bool operator==(const Box& lhs, const Box& rhs);*/
-bool _ZeqRK3BoxS1_(const Box *lhs, const Box *rhs);
-
-/*Box operator*(const Box& box, double mult);*/
-Box _ZmldRK3Box(const Box *const box, double mult);
-
-/*Box operator*(double mult, const Box& box);*/
-Box _ZmlRK3Boxd(double mult, const Box * const box);
-
 
 
 //// Shelf ////////////
@@ -64,10 +54,6 @@ double _ZNK5Shelf9getVolumeEv(const Shelf *const);
 
 /*void print() const;*/
 void _ZNK5Shelf5printEv(const Shelf *const);
-
-/*Box& getBox(int index);*/
-Box _ZN5Shelf6getBoxEiRK2Box(const Shelf *const, int index);
-
 
 
 #endif // __CPP2C_ENCAPSULATION_DEFS_H__

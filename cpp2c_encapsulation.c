@@ -1,11 +1,22 @@
 #include <stdio.h>
 #include "cpp2c_encapsulation_defs.h"
 
+extern const char* message;
 
 static Box largeBox;
 static Box box99;
 static Box box88;
 
+static void init_largeBox()
+{
+	 _ZN3BoxC1Eddd(&largeBox, 10, 20,30);
+}
+static void destroy_staticBox()
+{
+	_ZN3BoxD1Ev(&box88);
+	_ZN3BoxD1Ev(&box99);
+	_ZN3BoxD1Ev(&largeBox);
+}
 
 void thisFunc()
 {
@@ -50,12 +61,13 @@ void doBoxes()
 	printf("b2 volume: %f\n", b2.length * b2.width * b2.height);
 
 	Box b3 = b2;
-	Box b4 = _ZmlRK3Boxd(3, &b2);
-	printf("b3 %s b4\n", _ZeqRK3BoxS1_(&b3, &b4)? "equals" : "does not equal");
+	Box b4 = b2;
+	_ZN3BoxmLEd(&b4, 2);
+	printf("b3 %s b4\n", b3.width == b4.width && b3.height == b4.height && b3.length == b4.length? "equals" : "does not equal");
 
 	_ZN3BoxmLEd(&b3, 1.5);
 	_ZN3BoxmLEd(&b4, 0.5);
-	printf("Now, b3 %s b4\n",  _ZeqRK3BoxS1_(&b3, &b4) ? "equals" : "does not equal");
+	printf("Now, b3 %s b4\n", b3.width == b4.width && b3.height == b4.height && b3.length == b4.length? "equals" : "does not equal");
 
 	printf("\n--- End doBoxes() ---\n\n");
 	_ZN3BoxD1Ev(&b4);
@@ -104,10 +116,11 @@ void doShelves()
 	_ZN3BoxD1Ev(&aBox);
 }
 
+void __attribute__((constructor)) init_largeBox();
+void __attribute__((destructor)) destroy_staticBox();
+
 int main()
 {
-	_ZN3BoxC1Eddd(&largeBox, 10, 20,30);
-
    	printf("\n--- Start main() ---\n\n");
 
    	doBoxes();
@@ -122,9 +135,6 @@ int main()
         
     	printf("\n--- End main() ---\n\n");
 
-	_ZN3BoxD1Ev(&box88);
-	_ZN3BoxD1Ev(&box99);
-	_ZN3BoxD1Ev(&largeBox);
     	return 0;
 }
 

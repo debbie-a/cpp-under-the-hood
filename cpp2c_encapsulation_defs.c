@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "cpp2c_encapsulation_defs.h"
-
+#define DEF_MSG "The total volume held on the shelf is"
 
 const char* message = DEF_MSG;
 
@@ -42,23 +42,6 @@ void _ZNK3Box5printEv(const Box *const this)
     	printf("Box: %f x %f x %f\n", this->length, this->width, this->height); 
 }
 
-bool _ZeqRK3BoxS1_(const Box *lhs, const Box *rhs)
-{
-	return lhs->width == rhs->width && lhs->height == rhs->height && lhs->length == rhs->length;
-}
-Box _ZmldRK3Box(const Box *const box, double mult)
-{
-    	Box ret;
-	ret = *box;
-    	_ZN3BoxmLEd(&ret, mult);
-    	return ret;
-}
-
-Box _ZmlRK3Boxd(double mult, const Box *const box)
-{
-    return _ZmldRK3Box(box, mult);
-}
-
 
 //// Shelf ////////////
 
@@ -90,11 +73,6 @@ double _ZNK5Shelf9getVolumeEv(const Shelf *const this)
 void _ZNK5Shelf5printEv(const Shelf *const this)
 {
     printf("%s %f\n", message, _ZNK5Shelf9getVolumeEv(this));
-}
-
-Box _ZN5Shelf6getBoxEiRK2Box(const Shelf *const this, int index)
-{
-    return this->boxes[index];
 }
 
 
