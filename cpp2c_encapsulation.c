@@ -6,6 +6,8 @@ extern const char* message;
 static Box largeBox;
 static Box box99;
 static Box box88;
+static bool is_fist_call_to_thisFunc = 1;
+static bool is_fist_call_to_thatFunc = 1;
 
 static void init_largeBox()
 {
@@ -13,18 +15,19 @@ static void init_largeBox()
 }
 static void destroy_staticBox()
 {
-	_ZN3BoxD1Ev(&box88);
-	_ZN3BoxD1Ev(&box99);
+	if(is_fist_call_to_thatFunc == 0)
+		_ZN3BoxD1Ev(&box88);
+	if(is_fist_call_to_thisFunc == 0)
+		_ZN3BoxD1Ev(&box99);
 	_ZN3BoxD1Ev(&largeBox);
 }
 
 void thisFunc()
 {
-	static bool is_fist_call = 1;
 	printf("\n--- thisFunc() ---\n\n"); 
-	if(is_fist_call == 1)
+	if(is_fist_call_to_thisFunc == 1)
 	{
-		is_fist_call = 0;
+		is_fist_call_to_thisFunc = 0;
 		_ZN3BoxC1Eddd(&box99, 99, 99, 99);
 	}
     	_ZN3BoxmLEd(&box99, 10);
@@ -32,11 +35,10 @@ void thisFunc()
 
 void thatFunc()
 {
-	static bool is_fist_call = 1;
     	printf("\n--- thatFunc() ---\n\n"); 
-	if(is_fist_call == 1)
+	if(is_fist_call_to_thatFunc == 1)
 	{
-		is_fist_call = 0;
+		is_fist_call_to_thatFunc = 0;
 		_ZN3BoxC1Eddd(&box88, 88, 88, 88);
 	}
 	_ZN3BoxmLEd(&box88, 10);
