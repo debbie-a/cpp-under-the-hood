@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include "cpp2c_encapsulation_defs.h"
-#define DEF_MSG "The total volume held on the shelf is"
 
+
+const char DEF_MSG[] = "The total volume held on the shelf is";
 const char* message = DEF_MSG;
 
 //// Box ////////////
