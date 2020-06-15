@@ -2,7 +2,7 @@
 #include "cpp2c_encapsulation_defs.h"
 
 
-const char DEF_MSG[] = "The total volume held on the shelf is";
+static const char DEF_MSG[] = "The total volume held on the shelf is";
 const char* message = DEF_MSG;
 
 //// Box ////////////
@@ -54,7 +54,6 @@ void _ZN3ShelfC1E(Shelf *const this)
 		_ZN3BoxC1Ed(&box, 1);
 		_ZN5Shelf6setBoxEiRK3Box(this, i, &box);
 	}
-
 }
 
 void _ZN5Shelf6setBoxEiRK3Box(Shelf *const this, int index, const Box *dims)

@@ -4,7 +4,6 @@
 #define NUM_BOXES 3
 
 
-
 //// Box ////////////
 
 typedef struct Box
