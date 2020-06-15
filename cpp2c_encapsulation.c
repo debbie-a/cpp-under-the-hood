@@ -62,7 +62,7 @@ void doBoxes()
 
 	Box b3 = b2;
 	Box b4 = b2;
-	_ZN3BoxmLEd(&b4, 2);
+	_ZN3BoxmLEd(&b4, 3);
 	printf("b3 %s b4\n", b3.width == b4.width && b3.height == b4.height && b3.length == b4.length? "equals" : "does not equal");
 
 	_ZN3BoxmLEd(&b3, 1.5);
@@ -86,7 +86,7 @@ void doShelves()
 	_ZN3BoxC1Ed(&aBox, 5);
 
     	Shelf aShelf;
-	_ZN3ShelfC1E(&aShelf);
+	_ZN5ShelfC1Ev(&aShelf);
     	_ZNK5Shelf5printEv(&aShelf);
     	_ZN5Shelf6setBoxEiRK3Box(&aShelf, 1, &largeBox);
     	_ZN5Shelf6setBoxEiRK3Box(&aShelf, 0, &aBox);
@@ -99,14 +99,15 @@ void doShelves()
 
 	Box b1;
 	_ZN3BoxC1Eddd(&b1, 2, 4, 6);
-	_ZN3BoxD1Ev(&b1);
     	_ZN5Shelf6setBoxEiRK3Box(&aShelf, 1, &b1);
+	_ZN3BoxD1Ev(&b1);
 
 	Box b2;
 	_ZN3BoxC1Ed(&b2, 2);
     	_ZN5Shelf6setBoxEiRK3Box(&aShelf, 2, &b2);
 	_ZN3BoxD1Ev(&b2);
     	_ZNK5Shelf5printEv(&aShelf);
+	
 
     	printf("\n--- end doShelves() ---\n\n");
 	for(int i = NUM_BOXES-1; i >= 0 ; i--)

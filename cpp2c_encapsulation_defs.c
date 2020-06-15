@@ -46,7 +46,7 @@ void _ZNK3Box5printEv(const Box *const this)
 
 //// Shelf ////////////
 
-void _ZN3ShelfC1E(Shelf *const this)
+void _ZN5ShelfC1Ev(Shelf *const this)
 {
 	Box box;
 	for(int i = 0; i < NUM_BOXES; i++)

@@ -43,7 +43,7 @@ typedef struct Shelf
 //// Shelf Defs ////////////
 
 /*Shelf ctor*/
-void _ZN3ShelfC1E(Shelf *const);
+void _ZN5ShelfC1Ev(Shelf *const);
 
 /*void setBox(int index, const Box& dims);*/
 void _ZN5Shelf6setBoxEiRK3Box(Shelf *const, int index, const Box *dims);
