@@ -20,8 +20,8 @@ static void destroy_staticBox()
 
 void thisFunc()
 {
-	printf("\n--- thisFunc() ---\n\n"); 
 	static bool is_fist_call = 1;
+	printf("\n--- thisFunc() ---\n\n"); 
 	if(is_fist_call == 1)
 	{
 		is_fist_call = 0;
@@ -32,8 +32,8 @@ void thisFunc()
 
 void thatFunc()
 {
-    	printf("\n--- thatFunc() ---\n\n"); 
 	static bool is_fist_call = 1;
+    	printf("\n--- thatFunc() ---\n\n"); 
 	if(is_fist_call == 1)
 	{
 		is_fist_call = 0;
@@ -44,11 +44,14 @@ void thatFunc()
 
 void doBoxes()
 {
-	printf("\n--- Start doBoxes() ---\n\n");
+	Box b1;
+	Box b2;
+	Box b3;
+	Box b4;
 
-    	Box b1;
+	printf("\n--- Start doBoxes() ---\n\n");
+	
 	_ZN3BoxC1Ed(&b1, 3);
-    	Box b2;
 	_ZN3BoxC1Eddd(&b2, 4, 5, 6);
     
     	printf("b1 volume: %f\n", b1.length * b1.width * b1.height);
@@ -60,8 +63,8 @@ void doBoxes()
     	printf("b1 volume: %f\n", b1.length * b1.width * b1.height);
 	printf("b2 volume: %f\n", b2.length * b2.width * b2.height);
 
-	Box b3 = b2;
-	Box b4 = b2;
+	b3 = b2;
+	b4 = b2;
 	_ZN3BoxmLEd(&b4, 3);
 	printf("b3 %s b4\n", b3.width == b4.width && b3.height == b4.height && b3.length == b4.length? "equals" : "does not equal");
 
@@ -80,12 +83,17 @@ void doBoxes()
 
 void doShelves()
 {
+	Box aBox;
+	Shelf aShelf;
+	Box b1;
+	Box b2;
+	int i;
+
 	printf("\n--- start doShelves() ---\n\n");
 
-    	Box aBox;
 	_ZN3BoxC1Ed(&aBox, 5);
 
-    	Shelf aShelf;
+    	
 	_ZN5ShelfC1Ev(&aShelf);
     	_ZNK5Shelf5printEv(&aShelf);
     	_ZN5Shelf6setBoxEiRK3Box(&aShelf, 1, &largeBox);
@@ -97,12 +105,12 @@ void doShelves()
     	message = "Shelf's volume:";
    	_ZNK5Shelf5printEv(&aShelf);
 
-	Box b1;
+	
 	_ZN3BoxC1Eddd(&b1, 2, 4, 6);
     	_ZN5Shelf6setBoxEiRK3Box(&aShelf, 1, &b1);
 	_ZN3BoxD1Ev(&b1);
 
-	Box b2;
+	
 	_ZN3BoxC1Ed(&b2, 2);
     	_ZN5Shelf6setBoxEiRK3Box(&aShelf, 2, &b2);
 	_ZN3BoxD1Ev(&b2);
@@ -110,7 +118,7 @@ void doShelves()
 	
 
     	printf("\n--- end doShelves() ---\n\n");
-	for(int i = NUM_BOXES-1; i >= 0 ; i--)
+	for(i = NUM_BOXES-1; i >= 0 ; i--)
 	{
 		_ZN3BoxD1Ev(&aShelf.boxes[i]);
 	}

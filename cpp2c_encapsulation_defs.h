@@ -4,7 +4,7 @@
 #define NUM_BOXES 3
 
 
-//// Box ////////////
+/* Box */
 
 typedef struct Box
 {	
@@ -13,7 +13,7 @@ typedef struct Box
     	double height;
 }Box;
 
-//// Box Defs ////////////
+/* Box Defs */
 
 
 /*Box(double dim );*/
@@ -33,14 +33,15 @@ void _ZNK3Box5printEv(const Box *const);
 
 
 
-//// Shelf ////////////
+/* Shelf */
 
 typedef struct Shelf
 {
 	Box boxes[NUM_BOXES];
 }Shelf;
 
-//// Shelf Defs ////////////
+/* Shelf Defs */
+
 
 /*Shelf ctor*/
 void _ZN5ShelfC1Ev(Shelf *const);
@@ -55,5 +56,5 @@ double _ZNK5Shelf9getVolumeEv(const Shelf *const);
 void _ZNK5Shelf5printEv(const Shelf *const);
 
 
-#endif // __CPP2C_ENCAPSULATION_DEFS_H__
+#endif /*__CPP2C_ENCAPSULATION_DEFS_H__*/
 

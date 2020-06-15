@@ -5,7 +5,7 @@
 static const char DEF_MSG[] = "The total volume held on the shelf is";
 const char* message = DEF_MSG;
 
-//// Box ////////////
+/* Box */
 
 
 void _ZN3BoxC1Ed(Box *const this, double dim) 
@@ -44,12 +44,13 @@ void _ZNK3Box5printEv(const Box *const this)
 }
 
 
-//// Shelf ////////////
+/* Shelf */
 
 void _ZN5ShelfC1Ev(Shelf *const this)
 {
 	Box box;
-	for(int i = 0; i < NUM_BOXES; i++)
+	int i;
+	for(i = 0; i < NUM_BOXES; i++)
 	{
 		_ZN3BoxC1Ed(&box, 1);
 		_ZN5Shelf6setBoxEiRK3Box(this, i, &box);
@@ -58,21 +59,22 @@ void _ZN5ShelfC1Ev(Shelf *const this)
 
 void _ZN5Shelf6setBoxEiRK3Box(Shelf *const this, int index, const Box *dims)
 {
-    this->boxes[index] = *dims;
+    	this->boxes[index] = *dims;
 }
 
 double _ZNK5Shelf9getVolumeEv(const Shelf *const this)
 {
-    double vol = 0;
-    for(size_t i = 0; i < NUM_BOXES; ++i)
-        vol += this->boxes[i].length * this->boxes[i].width * this->boxes[i].height;
+    	double vol = 0;
+	size_t i;
+    	for(i = 0; i < NUM_BOXES; ++i)
+        	vol += this->boxes[i].length * this->boxes[i].width * this->boxes[i].height;
 
-    return vol;
+    	return vol;
 }
 
 void _ZNK5Shelf5printEv(const Shelf *const this)
 {
-    printf("%s %f\n", message, _ZNK5Shelf9getVolumeEv(this));
+    	printf("%s %f\n", message, _ZNK5Shelf9getVolumeEv(this));
 }
 
 
