@@ -17,8 +17,6 @@ typedef struct Box
 
 //// Box Defs ////////////
 
-/*default ctor dim = 1*/
-void _ZN3BoxC1E(Box *const);
 
 /*Box(double dim );*/
 void _ZN3BoxC1Ed(Box *const, double);
@@ -36,10 +34,7 @@ Box* _ZN3BoxmLEd(Box *const, double mult);
 void _ZNK3Box5printEv(const Box *const);
 
 /*bool operator==(const Box& lhs, const Box& rhs);*/
-bool _ZeqRK3BoxS1_(const Box *const lhs, const Box *const rhs);
-
-/*assignment operator*/
-Box* _ZeaSK3BoxS1(Box *const, const Box *const other);
+bool _ZeqRK3BoxS1_(const Box *lhs, const Box *rhs);
 
 /*Box operator*(const Box& box, double mult);*/
 Box _ZmldRK3Box(const Box *const box, double mult);

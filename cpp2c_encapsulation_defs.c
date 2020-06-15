@@ -6,13 +6,6 @@ const char* message = DEF_MSG;
 
 //// Box ////////////
 
-void _ZN3BoxC1E(Box *const this)
-{
-	this->length = 1;
-	this->width = 1;
-	this->height = 1; 
-   	_ZNK3Box5printEv(this);
-}
 
 void _ZN3BoxC1Ed(Box *const this, double dim) 
 {  
@@ -48,21 +41,15 @@ void _ZNK3Box5printEv(const Box *const this)
 {
     	printf("Box: %f x %f x %f\n", this->length, this->width, this->height); 
 }
-Box* _ZeaSK3BoxS1(Box *const this, const Box *const other)
-{
-	this->width = other->width;
-    	this->height = other->height;
-    	this->length = other->length;
-}
 
-bool _ZeqRK3BoxS1_(const Box *const lhs, const Box *const rhs)
+bool _ZeqRK3BoxS1_(const Box *lhs, const Box *rhs)
 {
 	return lhs->width == rhs->width && lhs->height == rhs->height && lhs->length == rhs->length;
 }
 Box _ZmldRK3Box(const Box *const box, double mult)
 {
     	Box ret;
-	_ZeaSK3BoxS1(&ret, box);
+	ret = *box;
     	_ZN3BoxmLEd(&ret, mult);
     	return ret;
 }
@@ -80,7 +67,7 @@ void _ZN3ShelfC1E(Shelf *const this)
 	Box box;
 	for(int i = 0; i < NUM_BOXES; i++)
 	{
-		_ZN3BoxC1E(&box);
+		_ZN3BoxC1Ed(&box, 1);
 		_ZN5Shelf6setBoxEiRK3Box(this, i, &box);
 	}
 

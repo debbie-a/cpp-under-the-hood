@@ -3,11 +3,13 @@
 
 
 static Box largeBox;
+static Box box99;
+static Box box88;
+
 
 void thisFunc()
 {
 	printf("\n--- thisFunc() ---\n\n"); 
-    	static Box box99;
 	static bool is_fist_call = 1;
 	if(is_fist_call == 1)
 	{
@@ -20,7 +22,6 @@ void thisFunc()
 void thatFunc()
 {
     	printf("\n--- thatFunc() ---\n\n"); 
-    	static Box box88;
 	static bool is_fist_call = 1;
 	if(is_fist_call == 1)
 	{
@@ -120,6 +121,9 @@ int main()
 	doShelves();
         
     	printf("\n--- End main() ---\n\n");
+
+	_ZN3BoxD1Ev(&box88);
+	_ZN3BoxD1Ev(&box99);
 	_ZN3BoxD1Ev(&largeBox);
     	return 0;
 }
